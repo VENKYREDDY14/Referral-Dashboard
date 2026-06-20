@@ -130,7 +130,7 @@ Referral-Dashboard/
 │ │ ├── referrals.js
 │ │ ├── referralsTable.js
 │ │ ├── serviceSummary.js
-│ │ └── referral.js (if separate from referralsTable)
+│ │
 │ │
 │ ├── pages/
 │ │ ├── dashboard.js
