@@ -5,13 +5,13 @@ import Overview from "../components/overview";
 import ServiceSummary from "../components/serviceSummary";
 import Referral from "../components/referral";
 import ReferralsTable from "../components/referralsTable";
+import Footer from "../components/footer";
+import Loader from "../components/loader";
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  console.log(data?.data);
 
   const fetchReferrals = async (searchTerm = "", sortOrder = "desc") => {
     const url = `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${searchTerm}&sort=${sortOrder}`;
@@ -49,14 +49,13 @@ const Dashboard = () => {
     <>
       <DashboardHeader />
 
-      {loading && (
-        <p role="alert" className="text-center text-gray-600 mt-4">
-          Loading referrals…
-        </p>
-      )}
+      {loading && <Loader loading={loading} />}
 
       {error && (
-        <p role="alert" className="text-center text-red-600 mt-4">
+        <p
+          role="alert"
+          className="flex justify-center items-center min-h-screen text-red-600 mt-4"
+        >
           {error}
         </p>
       )}
@@ -70,6 +69,8 @@ const Dashboard = () => {
           onSearch={handleSearch}
         />
       )}
+
+      <Footer />
     </>
   );
 };

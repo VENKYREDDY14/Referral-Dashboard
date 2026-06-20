@@ -15,7 +15,7 @@ const Overview = (props) => {
         aria-label="Overview metrics"
         className="p-6 bg-white rounded-lg shadow-md"
       >
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Overview</h2>
+        <h1 className="text-2xl font-semibold text-gray-800 mb-4">Overview</h1>
         <p className="text-gray-600">No metrics available.</p>
       </section>
     );
@@ -40,7 +40,7 @@ const Overview = (props) => {
       aria-label="Overview metrics"
       className="p-6 bg-white rounded-lg shadow-md"
     >
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Overview</h2>
+      <h1 className="text-xl font-bold text-gray-800 mb-4">Overview</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((metric) => (
           <div

@@ -9,9 +9,9 @@ const Referral = (props) => {
         aria-label="Share referral"
         className="p-6 bg-white rounded-lg shadow-md mt-6"
       >
-        <h2 className="text-xl font-bold text-gray-800 mb-4">
+        <h1 className="text-xl font-bold text-gray-800 mb-4">
           Refer friends and earn more
-        </h2>
+        </h1>
         <p className="text-gray-600">No referral information available.</p>
       </section>
     );
@@ -26,13 +26,13 @@ const Referral = (props) => {
       aria-label="Share referral"
       className="p-6 bg-white rounded-lg shadow-md mt-6"
     >
-      <h2 className="text-xl font-bold text-gray-800 mb-4">
+      <h1 className="text-xl font-bold text-gray-800 mb-4">
         Refer friends and earn more
-      </h2>
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-1">
-            YOUR REFERRAL LINK
+            Your Referral Link
           </label>
           <div className="flex">
             <input
@@ -52,7 +52,7 @@ const Referral = (props) => {
 
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-1">
-            YOUR REFERRAL CODE
+            Your Referral Code
           </label>
           <div className="flex">
             <input
