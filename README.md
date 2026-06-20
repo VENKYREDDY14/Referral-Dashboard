@@ -13,25 +13,30 @@ Implements loading states with `react-loader-spinner` (ThreeDots) and accessible
    ```bash
    git clone https://github.com/VENKYREDDY14/Referral-Dashboard.git
    cd my-app
-
    ```
 
+## Deployment
+
+The project is deployed on Vercel: [Referral Dashboard](https://referral-dashboard-swart.vercel.app)
+
+```
+
 2. Install dependencies:
-   npm install
+npm install
 
 3. Dependencies used:
 
-   React Router DOM → routing between Dashboard and Referral Details
+React Router DOM → routing between Dashboard and Referral Details
 
-   Tailwind CSS → styling
+Tailwind CSS → styling
 
-   js-cookie → JWT token handling
+js-cookie → JWT token handling
 
-   react-loader-spinner → ThreeDots loading spinner
+react-loader-spinner → ThreeDots loading spinner
 
 4. Initialize Tailwind:
 
-   npx tailwindcss init
+npx tailwindcss init
 
 5. Configure tailwind.config.js and include Tailwind directives in index.css:
 
@@ -41,31 +46,31 @@ Implements loading states with `react-loader-spinner` (ThreeDots) and accessible
 
 5. Features:
 
-   Dashboard Page
+Dashboard Page
 
-   Header, Overview, Service Summary, Referral, Referrals Table, Footer
+Header, Overview, Service Summary, Referral, Referrals Table, Footer
 
-   Referral Details Page
+Referral Details Page
 
-   Fetch referral by id
+Fetch referral by id
 
-   Handles multiple API response shapes (metrics, serviceSummary, referral, referrals)
+Handles multiple API response shapes (metrics, serviceSummary, referral, referrals)
 
-   Displays referral details with definition list
+Displays referral details with definition list
 
-   Back navigation link
+Back navigation link
 
 6. API Integration
 
-   Endpoints:
+Endpoints:
 
-   Full list: GET /api/referrals
+Full list: GET /api/referrals
 
-   Search: GET /api/referrals?search=term or GET /api/referrals?q=term
+Search: GET /api/referrals?search=term or GET /api/referrals?q=term
 
-   Sort by date: GET /api/referrals?sort=asc (asc = oldest first, desc = newest first; default is desc)
+Sort by date: GET /api/referrals?sort=asc (asc = oldest first, desc = newest first; default is desc)
 
-   Single referral: GET /api/referrals?id=123
+Single referral: GET /api/referrals?id=123
 
 7. Fetch Logic
 
@@ -148,3 +153,23 @@ Referral-Dashboard/
 ├── postcss.config.js
 ├── README.md
 └── tailwind.config.js
+
+## Screenshots
+
+### Login Page
+![Login Page](public/screenshots/login.png)
+![Login Page](public/screenshots/login-fail.png)
+
+### Navbar-Dashboard-Service
+![Dashboard](public/screenshots/navbar-dashboard.png)
+
+### Refer-all-referrals
+![Referral Details](public/screenshots/referral-details.png)
+
+### Referrals-table and Footer
+![Referral Details](public/screenshots/referrals-table-footer.png)
+```
+
+Test Credentials
+Email: admin@example.com
+Password: admin123
