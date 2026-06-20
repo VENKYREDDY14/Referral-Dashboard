@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# Referral Dashboard (React + Tailwind)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application for managing referrals, built with Tailwind CSS.  
+Includes a dashboard with metrics, service summary, referral details, and a referrals table.  
+Implements loading states with `react-loader-spinner` (ThreeDots) and accessible error handling.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+1. Clone the repository:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   ```bash
+   git clone https://github.com/VENKYREDDY14/Referral-Dashboard.git
+   cd my-app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```
 
-### `npm test`
+2. Install dependencies:
+   npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Dependencies used:
 
-### `npm run build`
+   React Router DOM → routing between Dashboard and Referral Details
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   Tailwind CSS → styling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   js-cookie → JWT token handling
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   react-loader-spinner → ThreeDots loading spinner
 
-### `npm run eject`
+4. Initialize Tailwind:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   npx tailwindcss init
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Configure tailwind.config.js and include Tailwind directives in index.css:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Features:
 
-## Learn More
+   Dashboard Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Header, Overview, Service Summary, Referral, Referrals Table, Footer
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Referral Details Page
 
-### Code Splitting
+   Fetch referral by id
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Handles multiple API response shapes (metrics, serviceSummary, referral, referrals)
 
-### Analyzing the Bundle Size
+   Displays referral details with definition list
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   Back navigation link
 
-### Making a Progressive Web App
+6. API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   Endpoints:
 
-### Advanced Configuration
+   Full list: GET /api/referrals
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   Search: GET /api/referrals?search=term or GET /api/referrals?q=term
 
-### Deployment
+   Sort by date: GET /api/referrals?sort=asc (asc = oldest first, desc = newest first; default is desc)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   Single referral: GET /api/referrals?id=123
 
-### `npm run build` fails to minify
+7. Fetch Logic
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Uses fetch with JWT token from cookies
+
+Handles success, error, and loading states
+
+Parser supports multiple response shapes
+
+8. Loading State
+
+Implemented reusable loader with ThreeDots:
+
+Accessible with role="alert" and hidden text for screen readers
+
+Reused across Dashboard and Referral Details
+
+9. Error Handling
+
+If API rejects or returns non‑success status:
+
+Display error message with status code + backend message
+
+Marked with role="alert" for accessibility
+
+10. Development Workflow
+
+Scaffold components (Header, Overview, ServiceSummary, Referral, ReferralsTable, Footer)
+
+Implement API fetch with JWT auth
+
+Add loading state with ThreeDots spinner
+
+Add error state with accessible alert
+
+Handle multiple API response shapes
+
+Wire up search + sort in referrals table
+
+Build Referral Details page with back navigation
+
+11. folder strucure
+
+Referral-Dashboard/
+├── .vscode/
+├── node_modules/
+├── public/
+│ └── index.html
+├── src/
+│ ├── components/
+│ │ ├── dashboardHeader.js
+│ │ ├── footer.js
+│ │ ├── loader.js
+│ │ ├── navbar.js
+│ │ ├── overview.js
+│ │ ├── protectedRoute.js
+│ │ ├── referrals.js
+│ │ ├── referralsTable.js
+│ │ ├── serviceSummary.js
+│ │ └── referral.js (if separate from referralsTable)
+│ │
+│ ├── pages/
+│ │ ├── dashboard.js
+│ │ ├── home.js
+│ │ ├── login.js
+│ │ ├── notFound.js
+│ │ └── referralDetails.js
+│ │
+│ ├── App.js
+│ ├── App.test.js
+│ ├── index.css
+│ ├── index.js
+│ ├── logo.svg
+│ ├── reportWebVitals.js
+│ └── setupTests.js
+│
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── README.md
+└── tailwind.config.js
