@@ -10,14 +10,14 @@ const Overview = (props) => {
   const { metrics } = props;
   if (!metrics || metrics.length === 0) {
     return (
-      <section
+      <div
         role="region"
         aria-label="Overview metrics"
         className="p-6 bg-white rounded-lg shadow-md"
       >
         <h1 className="text-2xl font-semibold text-gray-800 mb-4">Overview</h1>
         <p className="text-gray-600">No metrics available.</p>
-      </section>
+      </div>
     );
   }
 
@@ -35,7 +35,7 @@ const Overview = (props) => {
   };
 
   return (
-    <section
+    <div
       role="region"
       aria-label="Overview metrics"
       className="p-6 bg-white rounded-lg shadow-md"
@@ -57,7 +57,7 @@ const Overview = (props) => {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

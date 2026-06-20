@@ -10,57 +10,58 @@ const ReferralDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchReferral = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const url = `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?id=${id}`;
-
-      const options = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${Cookies.get("jwt_token")}`,
-          "Content-type": "application/json",
-        },
-      };
-
-      const response = await fetch(url, options);
-      const data = await response.json();
-      let referralData = null;
-
-      // Case A: referrals array nested inside data
-      if (Array.isArray(data?.data?.referrals)) {
-        referralData = data.data.referrals.find(
-          (r) => String(r.id) === String(id),
-        );
-      }
-      // Case B: referrals array at root
-      else if (Array.isArray(data?.referrals)) {
-        referralData = data.referrals.find((r) => String(r.id) === String(id));
-      }
-      // Case C: single referral object inside data
-      else if (data?.data?.id) {
-        referralData = String(data.data.id) === String(id) ? data.data : null;
-      }
-      // Case D: single referral object at root
-      else if (data?.id) {
-        referralData = String(data.id) === String(id) ? data : null;
-      }
-
-      if (referralData) {
-        setReferral(referralData);
-      } else {
-        setError("Referral not found");
-      }
-    } catch (e) {
-      setError("Referral not found");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchReferral = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const url = `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?id=${id}`;
+
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${Cookies.get("jwt_token")}`,
+            "Content-type": "application/json",
+          },
+        };
+
+        const response = await fetch(url, options);
+        const data = await response.json();
+        let referralData = null;
+
+        // Case A: referrals array nested inside data
+        if (Array.isArray(data?.data?.referrals)) {
+          referralData = data.data.referrals.find(
+            (r) => String(r.id) === String(id),
+          );
+        }
+        // Case B: referrals array at root
+        else if (Array.isArray(data?.referrals)) {
+          referralData = data.referrals.find(
+            (r) => String(r.id) === String(id),
+          );
+        }
+        // Case C: single referral object inside data
+        else if (data?.data?.id) {
+          referralData = String(data.data.id) === String(id) ? data.data : null;
+        }
+        // Case D: single referral object at root
+        else if (data?.id) {
+          referralData = String(data.id) === String(id) ? data : null;
+        }
+
+        if (referralData) {
+          setReferral(referralData);
+        } else {
+          setError("Referral not found");
+        }
+      } catch (e) {
+        setError("Referral not found");
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchReferral();
   }, [id]);
 
@@ -118,17 +119,13 @@ const ReferralDetails = () => {
               </div>
 
               <div className="contents">
-                <dt className="text-gray-500 text-sm">Name</dt>
-                <dd className="text-gray-900 font-medium">{referral.name}</dd>
-              </div>
-              <div className="contents">
                 <dt className="text-gray-500 text-sm">Service Name</dt>
                 <dd className="text-gray-900 font-medium">
                   {referral.serviceName}
                 </dd>
               </div>
               <div className="contents">
-                <dt className="text-gray-500 text-sm">date</dt>
+                <dt className="text-gray-500 text-sm">Date</dt>
                 <dd className="text-gray-900 font-medium">
                   {new Date(referral.date)
                     .toISOString()
@@ -137,7 +134,7 @@ const ReferralDetails = () => {
                 </dd>
               </div>
               <div className="contents">
-                <dt className="text-gray-500 text-sm">profit</dt>
+                <dt className="text-gray-500 text-sm">Profit</dt>
                 <dd className="text-gray-900 font-medium">
                   {new Intl.NumberFormat("en-US", {
                     style: "currency",
